@@ -1,0 +1,28 @@
+# --- OS / Environnement (Windows) ---
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- Éditeurs de code ---
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# --- Virtualisation & Conteneurs ---
+# Fichiers d'état locaux Vagrant (hors Vagrantfile)
+.vagrant/
+# Journaux d'événements et volumes locaux Docker
+*.log
+.docker/
+
+# --- Clés et Sécurité (CRITIQUE) ---
+# Clés privées, certificats et variables d'environnement
+*.pem
+*.key
+*.pub
+.env
+.env.*
+secrets.yml
