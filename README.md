@@ -8,15 +8,16 @@ L'objectif est de valider par la pratique les concepts théoriques et d'industri
 
 ## 📂 Organisation
 L'arborescence est structurée par objectifs opérationnels :
-architectures-cloud/ : Projets liés au Cloud computing, infrastructures hybrides, orchestration d'infrastructures à grande échelle.
 
-offensive-security/ (ou attacks/) : Laboratoires d'analyse de vulnérabilités, simulations d'attaques, tests de pénétration et exercices de type Red Team.
+* **`architectures-cloud/`** : Projets liés au Cloud computing, infrastructures hybrides, orchestration d'infrastructures à grande échelle.
 
-defensive-security/ (ou hardening/) : Mise en place de contre-mesures, durcissement de systèmes, configuration de pare-feu et détection d'intrusions (Blue Team).
+* **`offensive-security/`** : Laboratoires d'analyse de vulnérabilités, simulations d'attaques, tests de pénétration et exercices de type Red Team.
 
-infrastructure-services/ : Déploiement de services réseaux fondamentaux (DNS sécurisés, PKI, annuaires d'entreprise, routage virtuel) combinant VM et conteneurs.
+* **`defensive-security/`** : Mise en place de contre-mesures, durcissement de systèmes, configuration de pare-feu et détection d'intrusions (Blue Team).
 
-observability-operations/ : Scénarios centrés sur la supervision globale, l'analyse de logs et la haute disponibilité d'une infrastructure complète.
+* **`infrastructure-services/`** : Déploiement de services réseaux fondamentaux (DNS sécurisés, PKI, annuaires d'entreprise, routage virtuel) combinant VM et conteneurs.
+
+* **`observability-operations/`** : Cas centrés sur la supervision globale, l'analyse de logs et la haute disponibilité d'une infrastructure complète.
 
 ---
 
