@@ -7,12 +7,16 @@ L'objectif est de valider par la pratique les concepts théoriques et d'industri
 ---
 
 ## 📂 Organisation
-L'arborescence est structurée par piliers technologiques :
+L'arborescence est structurée par objectifs opérationnels :
+architectures-cloud/ : Projets liés au Cloud computing, infrastructures hybrides, orchestration d'infrastructures à grande échelle.
 
-*   **`virtualization/`** : Configurations de machines virtuelles, gestion d'hyperviseurs et isolation (Vagrant, QEMU/KVM).
-*   **`automation/`** : Scripts de configuration et d'Infrastructure as Code (Ansible, Terraform local).
-*   **`containers/`** : Durcissement, orchestration légère et sécurité des environnements conteneurisés (Docker, Podman).
-*   **`monitoring/`** : Collecte de métriques, centralisation des logs et observabilité (Prometheus, Grafana).
+offensive-security/ (ou attacks/) : Laboratoires d'analyse de vulnérabilités, simulations d'attaques, tests de pénétration et exercices de type Red Team.
+
+defensive-security/ (ou hardening/) : Mise en place de contre-mesures, durcissement de systèmes, configuration de pare-feu et détection d'intrusions (Blue Team).
+
+infrastructure-services/ : Déploiement de services réseaux fondamentaux (DNS sécurisés, PKI, annuaires d'entreprise, routage virtuel) combinant VM et conteneurs.
+
+observability-operations/ : Scénarios centrés sur la supervision globale, l'analyse de logs et la haute disponibilité d'une infrastructure complète.
 
 ---
 
