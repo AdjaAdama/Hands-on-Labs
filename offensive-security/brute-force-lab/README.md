@@ -16,8 +16,17 @@
 ## 🛡️ Réalisation des Manipulations
 
 ### Phase 1 : Attaque par itération (Force brute pure)
-*En attente des premières manipulations.*
+#### 1. Préparation de la cible
+Pour simuler un scénario d'audit réel, une archive RAR chiffrée a été générée depuis un environnement Windows 10, contenant des documents fictifs mais structurellement valides (`Informations bancaires.xlsx` et `Secrets.txt.docx`).
 
+* **Caractéristiques de l'archive :**
+  * **Algorithme cible** : RAR5 / WinRAR
+  * **Mot de passe appliqué** : `1234` (faible, propice à la force brute pure)
+  * **Option activée** : Chiffrement des noms de fichiers (masquage des métadonnées)
+
+L'archive a ensuite été transférée sur le bureau de la machine attaquante Kali Linux pour la suite des manipulations.
+
+![Archive cible sur Kali Linux](img/archive.png)
 ### Phase 2 : Attaque par dictionnaire
 *En attente des premières manipulations.*
 
