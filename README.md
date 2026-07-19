@@ -21,16 +21,16 @@ L'arborescence est structurée par objectifs opérationnels :
 
 ---
 
-## 🚀 Principes Directeurs de mes Labs
+## 📝 Principes Directeurs de mes Labs
 
 Pour chaque laboratoire présent dans ce dépôt, je m'impose les standards suivants :
-1. **Infrastructure as Code (IaC) :** Privilégier au maximum le déploiement scripté plutôt que les configurations manuelles.
+1. **Infrastructure as Code (IaC) :** Privilégier au maximum le déploiement scripté plutôt que les configurations manuelles. 
 2. **Security by Design :** Application du principe du moindre privilège, interdiction des secrets en clair et durcissement des configurations par défaut.
 3. **Reproductibilité :** Chaque sous-dossier contient ses propres instructions spécifiques pour être exécuté en un clic ou une commande.
 
 ---
 
-## 🛠️ Outils & Technologies
+## 💻🌐 Outils & Technologies
 
 * ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black) **Linux** : Système d'exploitation cible pour le déploiement des infrastructures.
 * ![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=flat-square&logo=ansible&logoColor=white) **Ansible** : Automatisation, gestion de configuration et Infrastructure as Code (IaC).
@@ -40,7 +40,7 @@ Pour chaque laboratoire présent dans ce dépôt, je m'impose les standards suiv
 
 ---
 
-## 🛠️ Prérequis Globaux
+## ⚙️ Prérequis Globaux
 
 Pour exécuter la majorité de ces labs, mon environnement de contrôle local utilise :
 * **Hyperviseur :** Un gestionnaire de machines virtuelles fonctionnel (comme VMware ou VirtualBox) pour accueillir les environnements isolés.
