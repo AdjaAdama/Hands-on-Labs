@@ -43,6 +43,5 @@ Pour chaque laboratoire présent dans ce dépôt, je m'impose les standards suiv
 ## 🛠️ Prérequis Globaux
 
 Pour exécuter la majorité de ces labs, mon environnement de contrôle local utilise :
-* Un système de type UNIX / Linux
-* **Ansible** `>= 2.15`
-* **Docker** / **Docker Compose**
+* **Hyperviseur :** Un gestionnaire de machines virtuelles fonctionnel (comme VMware ou VirtualBox) pour accueillir les environnements isolés.
+* **Ressources :** Un processeur multi-cœur et un minimum de 8 Go de RAM (16 Go recommandés pour les architectures multi-VM).
