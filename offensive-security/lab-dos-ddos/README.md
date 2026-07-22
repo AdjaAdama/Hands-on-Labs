@@ -11,7 +11,7 @@
 Avant de mener toute action, il est indispensable de cartographier la cible pour identifier les services actifs. Nous effectuons un scan ciblé à l'aide de l'outil **Nmap** afin de vérifier si le serveur Web (port 80) est accessible et opérationnel.
 
 ```bash
-nmap -p 80 [VOTRE_IP_CIBLE]
+nmap -p 80 192.168.232.128
 ```
 ![cartographie de la cible](img/nmap.png)
 ## Étape 2 : Configuration de la Résolution de Noms (`/etc/hosts`)
@@ -60,6 +60,7 @@ Afin de vérifier l'efficacité du déni de service, nous tentons d'accéder au 
 Le navigateur affiche l'erreur **"Server Not Found / We're having trouble finding that site"**, confirmant que le serveur est saturé et incapable de répondre aux nouvelles requêtes d'accès.
 
 ![serveur a nouveau disponible apres arret de l'attaque avec slowloris](img/stopping-slowloris-execution.png)
+
 Le serveur redevient disponible apres l'arret de l'execution de slowloris
 
 ![serveur a nouveau disponible apres arret de l'attaque avec slowloris](img/server-available-again.png)
@@ -96,3 +97,26 @@ Pour analyser la réaction du serveur face à l'attaque, nous appliquons un seco
 ip.src == 192.168.232.128 and ip.dst == 192.168.232.142 and tcp.flags.syn == 1 and tcp.flags.ack == 1
 ```
 ![filtre des paquets wireshark](img/wireshark-filtre2.png)
+
+* ip.src == 192.168.232.128 : trafic émis par le serveur cible (Metasploitable 2).
+
+* ip.dst == 192.168.232.142 : destination vers la machine attaquante (Kali Linux).
+
+* tcp.flags.syn == 1 and tcp.flags.ack == 1 : isole uniquement les paquets de réponse SYN-ACK.
+
+Ces réponses `SYN-ACK` confirment que le serveur réserve des ressources pour chaque requête. L'absence d'un `ACK` final de l'attaquant laisse ces connexions dans un état semi-ouvert, ce qui sature la file d'attente (*backlog*) de la pile TCP et bloque l'accès aux utilisateurs légitimes.
+
+### 5.4. Comparaison avec une Connexion TCP Légitime
+
+Pour mettre en évidence la différence de comportement entre l'attaque et un trafic standard, nous capturons une session de navigation légitime vers le serveur cible.
+
+![trafic legitime](img/metasploitable2-legitimate-acces.png)
+
+Puis, nous analysons les paquets correspondants sous Wireshark à l'aide du filtre suivant :
+
+```text
+ip.addr == 192.168.232.128 and tcp
+```
+![capture wireshark d'un trafic legitime](img/wireshark-legitimate-connexion.png)
+
+Contrairement au SYN Flood, la connexion légitime déroule l'intégralité du protocole TCP : la poignée de main (Three-Way Handshake) s'achève par l'envoi de l'ACK final, permettant l'émission immédiate de la requête HTTP (GET /). Cela confirme que l'attaque se distingue exclusivement par l'abandon volontaire des connexions en état semi-ouvert.
