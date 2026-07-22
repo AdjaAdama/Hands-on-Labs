@@ -56,3 +56,24 @@ L'attaque est lancée avec les paramètres par défaut : 150 sockets ouvertes en
 ### 4.3. Vérification de l'impact du Déni de Service (DoS)
 Afin de vérifier l'efficacité du déni de service, nous tentons d'accéder au serveur Web cible comme le ferait un utilisateur légitime en consultant l'URL http://www.mentorat.com depuis le navigateur Firefox.
 ![acces au serveur apres l'attaque avec slowloris slowloris](img/server-not-found.png)
+
+Le navigateur affiche l'erreur **"Server Not Found / We're having trouble finding that site"**, confirmant que le serveur est saturé et incapable de répondre aux nouvelles requêtes d'accès.
+
+![serveur a nouveau disponible apres arret de l'attaque avec slowloris](img/stopping-slowloris-execution.png)
+Le serveur redevient disponible apres l'arret de l'execution de slowloris
+
+![serveur a nouveau disponible apres arret de l'attaque avec slowloris](img/server-available-again.png)
+
+## Étape 5 : Capture et Analyse du Trafic Réseau avec Wireshark
+
+Afin d'observer la signature réseau du déni de service, nous utilisons **Wireshark**, un analyseur de paquets réseau permettant de capturer et d'inspecter le trafic en temps réel.
+
+### 5.1. Lancement de Wireshark
+
+Nous démarrons l'outil depuis le terminal de la machine Kali Linux :
+
+```bash
+wireshark
+```
+### 5.1. Capture du trafic et relancement de Slowloris
+Apres sélection de l'interface réseau active (eth0) correspondant au réseau local de la machine cible et que la capture sur Wireshark démarrée, nous relançons le script Slowloris afin d'intercepter la génération des requêtes HTTP incomplètes et le maintien des connexions TCP.
