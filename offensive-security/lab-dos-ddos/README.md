@@ -49,3 +49,10 @@ Nous lançons l'attaque Slowloris en ciblant l'adresse IP de notre machine Metas
 ```bash
 python slowloris.py 192.168.232.128 -p 80
 ```
+![lancement attaque dos avec slowloris slowloris](img/slowloris-execution.png)
+
+L'attaque est lancée avec les paramètres par défaut : 150 sockets ouvertes en parallèle, un délai de conservation des connexions (`--sleeptime`) de 15 secondes, sans proxy ni chiffrement HTTPS.
+
+### 4.3. Vérification de l'impact du Déni de Service (DoS)
+Afin de vérifier l'efficacité du déni de service, nous tentons d'accéder au serveur Web cible comme le ferait un utilisateur légitime en consultant l'URL http://www.mentorat.com depuis le navigateur Firefox.
+![acces au serveur apres l'attaque avec slowloris slowloris](img/server-not-found.png)
