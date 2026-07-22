@@ -77,3 +77,22 @@ wireshark
 ```
 ### 5.1. Capture du trafic et relancement de Slowloris
 Apres sélection de l'interface réseau active (eth0) correspondant au réseau local de la machine cible et que la capture sur Wireshark démarrée, nous relançons le script Slowloris afin d'intercepter la génération des requêtes HTTP incomplètes et le maintien des connexions TCP.
+![lancement de wireshark](img/wireshark-launch.png)
+
+### 5.2.Analyse des Indicateurs d'Attaque sous Wireshark
+Après avoir laissé tourner l'attaque quelques instants pour générer du trafic, nous retournons sur Wireshark et stoppons la capture. Nous allons maintenant filtrer les paquets pour isoler les indicateurs caractéristiques de l'attaque.
+```text
+ip.src==192.168.232.142 and ip.dst==192.168.232.128 and tcp.flags.syn == 1
+```
+Ce filtre affiche uniquement les paquets TCP envoyés depuis notre machine Kali (192.168.232.142) vers la cible Metasploitable 2 (192.168.232.128) et dont le bit SYN est activé. Il sert à repérer la multitude de paquets qui initient une connexion TCP entre ces deux machines, typique du comportement de Slowloris qui ouvre un maximum de sockets.
+
+![filtre des paquets wireshark](img/wireshark-filtre.png)
+
+### 5.3. Analyse des Réponses du Serveur (SYN-ACK) et Épuisement TCP
+
+Pour analyser la réaction du serveur face à l'attaque, nous appliquons un second filtre d'affichage sous Wireshark afin d'isoler les accusés de réception émis par la cible :
+
+```text
+ip.src == 192.168.232.128 and ip.dst == 192.168.232.142 and tcp.flags.syn == 1 and tcp.flags.ack == 1
+```
+![filtre des paquets wireshark](img/wireshark-filtre2.png)
