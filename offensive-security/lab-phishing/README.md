@@ -8,3 +8,15 @@
 * **Objectif** : Comprendre les mécanismes du phishing par clonage d'interface web, analyser les vecteurs d'attaque par ingénierie sociale et sensibiliser aux risques liés à la compromission d'identifiants sur les réseaux sociaux.
 
 ## Réalisation des Manipulations
+### 1. Lancement du tunnel Ngrok
+Cette étape consiste à exposer le service local sur Internet afin de le rendre accessible depuis l'extérieur.
+
+**Commande exécutée** :
+  ```bash
+  ngrok http 80
+  ```
+**Role** : création d'un tunnel sécurisé (reverse proxy) pointant vers le port local 80 (où s'exécute le serveur web ou le framework de phishing sur Kali).
+
+**Resultat** : génération d'une URL publique temporaire en https:// permettant de rediriger le trafic de la victime vers notre machine.
+
+![lancement ngrok](img/lancement-ngrok.png)
