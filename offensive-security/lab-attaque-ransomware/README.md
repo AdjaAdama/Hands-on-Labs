@@ -82,7 +82,93 @@ Une fois le dossier cible identifié, nous procédons au téléversement de notr
 cd C:\\Users\\adjaa\\Desktop\\secret
 ```
 2. **Téléverser le script depuis Kali :**
-```text
+```sh
 upload /home/adja/HARansom.bat
 ```
 ![televersement du script de chiffrement](./img/televersement-script-chiffrement.png) 
+
+Le script HARansom.bat a été transféré avec succès et se trouve désormais dans le répertoire cible de la machine compromise, prêt pour l'exécution.
+
+### Étape 6 : Passage en mode shell et vérification du script
+
+Une fois le script `HARansom.bat` téléversé, nous basculons dans l'invite de commande Windows native (CMD) pour préparer l'exécution du ransomware.
+
+1. **Vérification du transfert :**
+```text
+ls
+```
+![verification de la presence du fichier de chiffrement](./img/verification-presence-fichier-chiffrement.png)
+
+Le fichier HARansom.bat est bien présent aux côtés des documents sensibles, confirmant que le téléversement a réussi et que l'environnement de test est prêt.
+
+2. **Passage en mode shell et vérification dans CMD :**
+
+```text
+shell
+dir
+```
+
+Le shell Windows confirme que nous sommes positionnés dans C:\Users\adjaa\Desktop\secret et que le script HARansom.bat est bien présent parmi les fichiers cibles, prêt pour l'exécution.
+
+### Étape 7 : Exécution du script de simulation de chiffrement
+
+Une fois positionnés dans le dossier cible via le shell Windows, nous exécutons le script batch pour simuler le chiffrement des fichiers sensibles et la génération de la note de rançon.
+
+1. **Exécution du script :**
+```cmd
+HARansom.bat
+```
+**Résultat :**
+le script traite un par un les fichiers du répertoire en utilisant CertUtil pour encoder leur contenu, générant de nouveaux fichiers avec l'extension .enc, puis finalise l'opération en sauvegardant un avertissement dans note.txt
+
+2. **Vérification du contenu du dossier après chiffrement :**
+```cmd
+dir
+```
+![contenu dossier chiffré](./img/contenu-dossier-apres-chiffrement.png)
+La liste des fichiers obtenue via l'invite de commande Windows confirme que tous les documents ont bien été renommés en fichiers .enc et que le fichier note.txt est présent dans le répertoire.
+
+3. **Consultation de la note de rançon :**
+en ouvrant le fichier `note.txt` généré sur la machine victime, on accède au message d'avertissement et aux instructions de l'attaquant.
+
+![contenu dossier chiffré](./img/contenu-dossier-chiffré.png)
+
+![note de rancon](./img/note-rancon.png)
+
+Le message indique clairement que les fichiers ont été chiffrés et invite la victime à contacter l'adresse e-mail `hackahmed@hackahmed.com` pour obtenir le fichier de déchiffrement.
+
+### Étape 8 : Déchiffrement après paiement de rançon
+
+Supposons maintenant que la victime a payé la rançon. Nous allons déposer l'outil de déchiffrement dans le même dossier secret afin de restaurer les fichiers chiffrés.
+
+1. **Téléversement de l'outil de déchiffrement :**
+```sh
+upload /home/adja/HADecrypt.bat
+```
+![televerement script de dechiffrement](./img/televersement-script-dechiffrement.png)
+Le script HADecrypt.bat a été transféré avec succès (100% complété) sur la machine victime dans le répertoire cible.
+
+2. **Exécution de l'outil de déchiffrement :**
+apres passage en mode shell avec la commnde **shell**, on execute outil de déchiffrement.
+
+```sh
+HADecrypt.bat
+```
+
+![dechiffrement](./img/dehchiffrement.png)
+
+3. **Vérification de la restauration des fichiers :**
+```cmd
+dir
+```
+
+![verification dechiffrement](./img/verification-dechiffrement.png)
+
+les fichiers ont retrouvé leurs formats initiaux (les extensions .enc ont été retirées) et que l'intégrité du répertoire est rétablie après l'application de l'outil de déchiffrement.
+
+4. **Validation visuelle sur le bureau de la machine Windows :**
+en retournant sur l'explorateur de fichiers de la machine victime, on constate que tous les icônes et formats d'origine sont de nouveau accessibles et exploitables.
+
+![dossier restauré](./img/dossier-dechiffre.png)
+
+Les fichiers (images, documents Excel, texte et Word) ont retrouvé leurs aperçus et leurs extensions standard, confirmant la réussite complète de la procédure de déchiffrement.
